@@ -1,0 +1,213 @@
+:root{
+  --ink:#120C1A;
+  --ink-2:#1D1429;
+  --rose:#E76F8E;
+  --blush:#F3A6B8;
+  --gold:#EFC08A;
+  --lilac:#9C7BC4;
+  --cream:#FBF2F5;
+
+  --glass:rgba(255,255,255,.055);
+  --glass-line:rgba(255,255,255,.14);
+  --text:rgba(251,242,245,.92);
+  --text-dim:rgba(251,242,245,.60);
+
+  --shell:min(1080px, 92vw);
+  --blur:22px;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--text);
+  font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+body.locked{overflow:hidden}
+
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--blush);outline-offset:4px;border-radius:4px}
+
+/* ---------- cahaya latar ---------- */
+.sky{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.lamp{position:absolute;border-radius:50%;filter:blur(90px);opacity:0;transition:opacity 2.4s ease}
+.lit .lamp{opacity:1}
+.lamp-1{width:62vmax;height:62vmax;top:-26vmax;right:-18vmax;
+  background:radial-gradient(circle,rgba(231,111,142,.50),rgba(231,111,142,0) 68%)}
+.lamp-2{width:52vmax;height:52vmax;bottom:-22vmax;left:-16vmax;
+  background:radial-gradient(circle,rgba(156,123,196,.42),rgba(156,123,196,0) 70%)}
+.lamp-3{width:38vmax;height:38vmax;top:38%;left:46%;
+  background:radial-gradient(circle,rgba(239,192,138,.26),rgba(239,192,138,0) 70%)}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.30;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+#motes{position:fixed;inset:0;z-index:1;pointer-events:none}
+
+/* ---------- gerbang pembuka ---------- */
+#gate{
+  position:fixed;inset:0;z-index:50;
+  display:grid;place-items:center;padding:24px;
+  background:radial-gradient(circle at 50% 45%,#241830,#0C0812 75%);
+  transition:opacity 1.1s ease, visibility 1.1s;
+}
+#gate.gone{opacity:0;visibility:hidden}
+.envelope{
+  width:min(420px,100%);text-align:center;padding:44px 32px 38px;
+  border-radius:26px;border:1px solid var(--glass-line);
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(var(--blur));backdrop-filter:blur(var(--blur));
+  box-shadow:0 30px 70px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.14);
+}
+.seal{
+  width:46px;height:46px;margin:0 auto 22px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,var(--blush),var(--rose) 70%);
+  box-shadow:0 0 34px rgba(231,111,142,.55);
+  animation:pulse 3.4s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.09);opacity:1}}
+.envelope p{margin:0 0 26px;color:var(--text-dim);font-size:.95rem}
+.envelope strong{display:block;font-family:"Fraunces",Georgia,serif;font-style:italic;
+  font-weight:400;font-size:1.6rem;color:var(--cream);margin-bottom:10px;letter-spacing:.01em}
+.open-btn{
+  border:1px solid rgba(243,166,184,.45);border-radius:999px;
+  background:rgba(231,111,142,.16);color:var(--cream);
+  padding:13px 40px;letter-spacing:.06em;font-size:.9rem;
+  transition:background .35s ease, transform .35s ease, box-shadow .35s ease;
+}
+.open-btn:hover{background:rgba(231,111,142,.3);transform:translateY(-2px);box-shadow:0 12px 30px rgba(231,111,142,.25)}
+.gate-note{margin:18px 0 0;font-size:.72rem;color:rgba(251,242,245,.34);letter-spacing:.04em}
+
+/* ---------- panggung ---------- */
+main{position:relative;z-index:2;width:var(--shell);margin:0 auto;padding-bottom:120px}
+.reveal{opacity:0;transition:opacity 1.4s ease}
+.lit .reveal{opacity:1}
+.lit .d1{transition-delay:.15s}
+.lit .d2{transition-delay:.55s}
+.lit .d3{transition-delay:.95s}
+.lit .d4{transition-delay:1.35s}
+
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:34px;text-align:center;padding:90px 0 60px}
+
+.frame{
+  position:relative;margin:0;
+  width:min(272px,64vw);aspect-ratio:3/4;
+  border-radius:150px 150px 22px 22px;
+  padding:9px;
+  border:1px solid rgba(255,255,255,.2);
+  background:linear-gradient(160deg,rgba(255,255,255,.16),rgba(255,255,255,.03));
+  -webkit-backdrop-filter:blur(var(--blur));backdrop-filter:blur(var(--blur));
+  box-shadow:0 40px 90px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.3);
+  transform:translateY(14px) scale(.97);
+  transition:transform 1.8s cubic-bezier(.2,.7,.2,1);
+}
+.lit .frame{transform:translateY(0) scale(1)}
+.frame::before{
+  content:"";position:absolute;inset:-34%;z-index:-1;border-radius:50%;
+  background:radial-gradient(circle,rgba(239,192,138,.34),rgba(231,111,142,.18) 45%,transparent 70%);
+  filter:blur(38px);
+}
+.frame img{
+  width:100%;height:100%;object-fit:cover;object-position:70% 32%;
+  border-radius:142px 142px 15px 15px;
+  filter:brightness(1.16) contrast(1.06) saturate(1.05);
+}
+.frame::after{ /* pantulan kaca */
+  content:"";position:absolute;left:9px;right:9px;top:9px;bottom:9px;
+  border-radius:142px 142px 15px 15px;pointer-events:none;
+  background:linear-gradient(115deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 38%);
+}
+
+.name{
+  margin:0;font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:400;
+  font-size:clamp(2.5rem,9vw,4.6rem);line-height:1.02;letter-spacing:-.015em;
+  color:var(--cream);
+  text-shadow:0 0 60px rgba(231,111,142,.32);
+}
+.tagline{margin:0;max-width:30ch;font-size:.98rem;color:var(--text-dim)}
+
+.cue{display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-size:.7rem;letter-spacing:.16em;color:rgba(251,242,245,.3)}
+.cue span{width:1px;height:44px;background:linear-gradient(var(--blush),transparent);
+  animation:drop 2.6s ease-in-out infinite}
+@keyframes drop{0%,100%{transform:scaleY(.35);transform-origin:top;opacity:.4}50%{transform:scaleY(1);opacity:1}}
+
+/* ---------- panel kaca ---------- */
+.panel{
+  border-radius:26px;border:1px solid var(--glass-line);
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(var(--blur));backdrop-filter:blur(var(--blur));
+  box-shadow:0 26px 60px rgba(0,0,0,.36), inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+.letter{padding:0 0 110px}
+.letter .panel{padding:clamp(30px,5.5vw,58px);max-width:660px;margin:0 auto}
+.letter h2{
+  margin:0 0 26px;font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:400;
+  font-size:clamp(1.5rem,4.2vw,2.1rem);color:var(--cream);letter-spacing:-.01em;
+}
+.letter p{margin:0 0 20px;max-width:62ch;color:rgba(251,242,245,.82)}
+.letter p:last-of-type{margin-bottom:0}
+
+/* ---------- hal kecil ---------- */
+.little{padding:0 0 110px}
+.little h2{
+  margin:0 0 34px;text-align:center;
+  font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:400;
+  font-size:clamp(1.4rem,4vw,2rem);color:var(--cream);
+}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{padding:26px 24px 28px}
+.card h3{margin:0 0 8px;font-family:"Fraunces",Georgia,serif;font-weight:500;
+  font-size:1.06rem;color:var(--blush);letter-spacing:.005em}
+.card p{margin:0;font-size:.92rem;color:rgba(251,242,245,.7)}
+
+/* ---------- penutup ---------- */
+.closing{text-align:center;padding:0 0 40px}
+.closing .big{
+  margin:0 auto 26px;max-width:22ch;
+  font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:300;
+  font-size:clamp(1.6rem,5.4vw,2.6rem);line-height:1.26;color:var(--cream);
+}
+.sign{margin:0;font-size:.85rem;letter-spacing:.1em;color:rgba(251,242,245,.42)}
+.heart{display:block;margin:34px auto 0;width:9px;height:9px;border-radius:50%;
+  background:var(--rose);box-shadow:0 0 22px var(--rose);animation:pulse 3.4s ease-in-out infinite}
+
+/* ---------- kontrol lagu ---------- */
+#music{
+  position:fixed;right:20px;bottom:20px;z-index:30;
+  display:flex;align-items:center;gap:11px;
+  max-width:calc(100vw - 40px);
+  padding:11px 19px 11px 15px;border-radius:999px;
+  border:1px solid var(--glass-line);background:rgba(255,255,255,.08);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  box-shadow:0 14px 34px rgba(0,0,0,.4);
+  font-size:.78rem;letter-spacing:.05em;color:rgba(251,242,245,.8);
+  opacity:0;visibility:hidden;transition:opacity .8s ease .8s,visibility .8s ease .8s,background .3s ease;
+}
+.lit #music{opacity:1;visibility:visible}
+#music:hover{background:rgba(255,255,255,.14)}
+#musicLabel{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bars{display:flex;align-items:flex-end;gap:2.5px;height:15px;flex:none}
+.bars i{width:2.5px;background:var(--blush);border-radius:2px;height:30%}
+#music.on .bars i{animation:eq .95s ease-in-out infinite}
+#music.on .bars i:nth-child(2){animation-delay:.18s}
+#music.on .bars i:nth-child(3){animation-delay:.36s}
+#music.on .bars i:nth-child(4){animation-delay:.54s}
+@keyframes eq{0%,100%{height:26%}50%{height:100%}}
+
+@media (max-width:600px){
+  main{padding-bottom:96px}
+  #music{right:14px;bottom:14px;padding:10px 16px 10px 13px}
+  .letter,.little{padding-bottom:84px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+  .reveal{opacity:1}
+}
