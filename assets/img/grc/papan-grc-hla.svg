@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img"
+    aria-label="Ilustrasi papan semen GRC board PT Hikma Langgeng Abadi">
+    <defs>
+        <linearGradient id="latar" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="100%" stop-color="#e9eef3" />
+        </linearGradient>
+        <linearGradient id="muka" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#e4e9ee" />
+            <stop offset="100%" stop-color="#c3ccd6" />
+        </linearGradient>
+        <linearGradient id="tepi" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#a9b4c0" />
+            <stop offset="100%" stop-color="#7d8a99" />
+        </linearGradient>
+    </defs>
+
+    <rect width="800" height="560" fill="url(#latar)" />
+
+    <!-- lima papan bertumpuk menyebar -->
+    <g stroke="#6f7d8c" stroke-width="1.4">
+        <g>
+            <path d="M96 366 L470 268 L700 330 L326 428 Z" fill="url(#muka)" />
+            <path d="M96 366 L326 428 L326 448 L96 386 Z" fill="url(#tepi)" />
+            <path d="M326 428 L700 330 L700 350 L326 448 Z" fill="#94a1af" />
+        </g>
+        <g>
+            <path d="M96 320 L470 222 L700 284 L326 382 Z" fill="url(#muka)" />
+            <path d="M96 320 L326 382 L326 400 L96 338 Z" fill="url(#tepi)" />
+            <path d="M326 382 L700 284 L700 302 L326 400 Z" fill="#94a1af" />
+        </g>
+        <g>
+            <path d="M96 276 L470 178 L700 240 L326 338 Z" fill="url(#muka)" />
+            <path d="M96 276 L326 338 L326 354 L96 292 Z" fill="url(#tepi)" />
+            <path d="M326 338 L700 240 L700 256 L326 354 Z" fill="#94a1af" />
+        </g>
+        <g>
+            <path d="M96 236 L470 138 L700 200 L326 298 Z" fill="url(#muka)" />
+            <path d="M96 236 L326 298 L326 312 L96 250 Z" fill="url(#tepi)" />
+            <path d="M326 298 L700 200 L700 214 L326 312 Z" fill="#94a1af" />
+        </g>
+        <g>
+            <path d="M96 200 L470 102 L700 164 L326 262 Z" fill="url(#muka)" />
+            <path d="M96 200 L326 262 L326 274 L96 212 Z" fill="url(#tepi)" />
+            <path d="M326 262 L700 164 L700 176 L326 274 Z" fill="#94a1af" />
+        </g>
+    </g>
+
+    <g font-family="Verdana,Segoe UI,sans-serif" text-anchor="middle">
+        <text x="400" y="492" font-size="19" font-weight="bold" fill="#1c3a5e">PAPAN SEMEN NON ASBESTOS</text>
+        <text x="400" y="516" font-size="15" fill="#5c6b7a">Plafon &#183; partisi &#183; fasad &#183; deck &#183; plank &#183; dekorasi</text>
+    </g>
+</svg>

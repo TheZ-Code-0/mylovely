@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img"
+    aria-label="Ilustrasi Toilet Cubicle System PT Hikma Langgeng Abadi">
+    <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="100%" stop-color="#e9eef3" />
+        </linearGradient>
+        <linearGradient id="doorA" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#d8e2ea" />
+            <stop offset="100%" stop-color="#b8c7d4" />
+        </linearGradient>
+        <linearGradient id="doorB" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#2f6f7e" />
+            <stop offset="100%" stop-color="#1d4f5c" />
+        </linearGradient>
+        <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#d5dde4" />
+            <stop offset="100%" stop-color="#aab8c4" />
+        </linearGradient>
+    </defs>
+
+    <rect width="800" height="560" fill="url(#bg)" />
+
+    <!-- dinding belakang -->
+    <rect x="0" y="0" width="800" height="430" fill="#f2f5f8" />
+    <g stroke="#e0e6ec" stroke-width="2">
+        <path d="M0 90 H800" />
+        <path d="M0 200 H800" />
+        <path d="M0 310 H800" />
+        <path d="M130 0 V430" />
+        <path d="M330 0 V430" />
+        <path d="M530 0 V430" />
+        <path d="M730 0 V430" />
+    </g>
+
+    <!-- lantai -->
+    <rect x="0" y="430" width="800" height="130" fill="url(#floor)" />
+    <g stroke="#9aa9b6" stroke-width="2" opacity="0.6">
+        <path d="M0 470 H800" />
+        <path d="M0 515 H800" />
+        <path d="M120 430 L60 560" />
+        <path d="M300 430 L270 560" />
+        <path d="M480 430 L500 560" />
+        <path d="M660 430 L720 560" />
+    </g>
+
+    <!-- bayangan bawah partisi -->
+    <ellipse cx="400" cy="452" rx="330" ry="16" fill="#7f8f9c" opacity="0.25" />
+
+    <!-- rangka atas (head rail) -->
+    <rect x="80" y="96" width="640" height="18" rx="6" fill="#8fa0ad" />
+    <rect x="80" y="96" width="640" height="7" rx="3" fill="#b3c1cc" />
+
+    <!-- panel & pintu cubicle -->
+    <g>
+        <!-- partisi 1 -->
+        <rect x="96" y="114" width="26" height="292" fill="#c6d2dc" />
+        <rect x="96" y="114" width="8" height="292" fill="#dbe4eb" />
+        <!-- pintu 1 (aluminium) -->
+        <rect x="122" y="122" width="186" height="276" rx="6" fill="url(#doorA)" stroke="#9fb0bd" stroke-width="3" />
+        <rect x="140" y="140" width="150" height="180" rx="4" fill="#eef3f7" opacity="0.75" />
+        <circle cx="292" cy="262" r="7" fill="#5b6c79" />
+        <rect x="272" y="252" width="14" height="20" rx="4" fill="#7c8d9a" />
+
+        <!-- partisi 2 -->
+        <rect x="308" y="114" width="26" height="292" fill="#c6d2dc" />
+        <rect x="308" y="114" width="8" height="292" fill="#dbe4eb" />
+        <!-- pintu 2 (compact laminate warna) -->
+        <rect x="334" y="122" width="186" height="276" rx="6" fill="url(#doorB)" stroke="#17414c" stroke-width="3" />
+        <rect x="352" y="140" width="150" height="180" rx="4" fill="#ffffff" opacity="0.08" />
+        <circle cx="504" cy="262" r="7" fill="#cfdde4" />
+        <rect x="484" y="252" width="14" height="20" rx="4" fill="#a8bfc8" />
+        <!-- indikator terkunci -->
+        <rect x="486" y="214" width="30" height="12" rx="6" fill="#42b549" />
+
+        <!-- partisi 3 -->
+        <rect x="520" y="114" width="26" height="292" fill="#c6d2dc" />
+        <rect x="520" y="114" width="8" height="292" fill="#dbe4eb" />
+        <!-- pintu 3 (aluminium) -->
+        <rect x="546" y="122" width="158" height="276" rx="6" fill="url(#doorA)" stroke="#9fb0bd" stroke-width="3" />
+        <rect x="564" y="140" width="122" height="180" rx="4" fill="#eef3f7" opacity="0.75" />
+        <circle cx="688" cy="262" r="7" fill="#5b6c79" />
+
+        <!-- partisi ujung -->
+        <rect x="704" y="114" width="26" height="292" fill="#c6d2dc" />
+        <rect x="704" y="114" width="8" height="292" fill="#dbe4eb" />
+    </g>
+
+    <!-- kaki / adjustable leg -->
+    <g fill="#8b9aa6">
+        <rect x="101" y="406" width="16" height="26" rx="4" />
+        <rect x="313" y="406" width="16" height="26" rx="4" />
+        <rect x="525" y="406" width="16" height="26" rx="4" />
+        <rect x="709" y="406" width="16" height="26" rx="4" />
+    </g>
+
+    <!-- label -->
+    <g font-family="Segoe UI, Arial, sans-serif">
+        <rect x="96" y="470" width="330" height="54" rx="12" fill="#0b1b23" opacity="0.9" />
+        <text x="118" y="495" fill="#ffffff" font-size="20" font-weight="700">TOILET CUBICLE SYSTEM</text>
+        <text x="118" y="514" fill="#7fd3e4" font-size="13" letter-spacing="1">PT. HIKMA LANGGENG ABADI</text>
+    </g>
+</svg>

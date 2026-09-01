@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img"
+    aria-label="Ilustrasi atap uPVC twinwall Alderon PT Hikma Langgeng Abadi">
+    <defs>
+        <linearGradient id="langit" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="100%" stop-color="#e9eef3" />
+        </linearGradient>
+        <linearGradient id="atapBiru" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#3f7fa6" />
+            <stop offset="100%" stop-color="#22536e" />
+        </linearGradient>
+        <linearGradient id="atapTerang" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#cfe0ea" />
+            <stop offset="100%" stop-color="#a9c2d1" />
+        </linearGradient>
+        <linearGradient id="potongan" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e6edf2" />
+            <stop offset="100%" stop-color="#c2cfd9" />
+        </linearGradient>
+    </defs>
+
+    <rect width="800" height="560" fill="url(#langit)" />
+
+    <!-- bidang atap gelombang, tampak perspektif -->
+    <g>
+        <path d="M60 300 L400 170 L760 300 L400 430 Z" fill="#dbe4eb" />
+        <g fill="url(#atapBiru)" stroke="#1b4459" stroke-width="1.5">
+            <path d="M60 300 L400 170 L432 182 L92 312 Z" />
+            <path d="M124 324 L464 194 L496 206 L156 336 Z" />
+            <path d="M188 348 L528 218 L560 230 L220 360 Z" />
+            <path d="M252 372 L592 242 L624 254 L284 384 Z" />
+            <path d="M316 396 L656 266 L688 278 L348 408 Z" />
+        </g>
+        <g fill="url(#atapTerang)" stroke="#8fa7b6" stroke-width="1.2">
+            <path d="M92 312 L432 182 L464 194 L124 324 Z" />
+            <path d="M156 336 L496 206 L528 218 L188 348 Z" />
+            <path d="M220 360 L560 230 L592 242 L252 372 Z" />
+            <path d="M284 384 L624 254 L656 266 L316 396 Z" />
+        </g>
+    </g>
+
+    <!-- potongan rongga twinwall di tepi depan -->
+    <g transform="translate(96,404)">
+        <path d="M0 0 L280 -108 L280 -86 L0 22 Z" fill="url(#potongan)" stroke="#8fa7b6" stroke-width="1.5" />
+        <g stroke="#b6c6d2" stroke-width="1.1">
+            <path d="M28 -11 L28 11" /><path d="M56 -22 L56 0" />
+            <path d="M84 -32 L84 -10" /><path d="M112 -43 L112 -21" />
+            <path d="M140 -54 L140 -32" /><path d="M168 -65 L168 -43" />
+            <path d="M196 -76 L196 -54" /><path d="M224 -86 L224 -64" />
+            <path d="M252 -97 L252 -75" />
+        </g>
+    </g>
+
+    <!-- gording baja -->
+    <g fill="#9aa8b4">
+        <path d="M120 330 L128 330 L128 470 L120 470 Z" />
+        <path d="M400 438 L408 438 L408 466 L400 466 Z" />
+        <path d="M680 330 L688 330 L688 470 L680 470 Z" />
+    </g>
+
+    <!-- keterangan lapisan -->
+    <g font-family="Verdana,Segoe UI,sans-serif">
+        <text x="400" y="502" font-size="19" font-weight="bold" fill="#1c3a5e"
+            text-anchor="middle">uPVC TWINWALL 10 mm</text>
+        <text x="400" y="526" font-size="15" fill="#5c6b7a"
+            text-anchor="middle">Dua kulit berongga &#183; lebar efektif 830&#8211;860 mm</text>
+    </g>
+</svg>
