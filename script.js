@@ -1,5 +1,5 @@
 /* ============================================================
-   LAGU: Glenn Fredly — Akhir Cerita Cinta
+   LAGU
 
    1. Taruh file mp3-nya di folder yang sama dengan halaman ini.
    2. Tulis nama file-nya persis (huruf besar/kecil ikut dihitung)
@@ -30,13 +30,13 @@ function sizeCanvas(){
   cx.setTransform(dpr, 0, 0, dpr, 0, 0);
 }
 function seedMotes(){
-  const n = innerWidth < 640 ? 26 : 46;
+  const n = innerWidth < 640 ? 24 : 42;
   motes = Array.from({length:n}, () => ({
     x: Math.random()*W, y: Math.random()*H,
     r: Math.random()*1.7 + .5,
-    vy: -(Math.random()*.22 + .05),
-    vx: (Math.random()-.5)*.14,
-    a: Math.random()*.4 + .12,
+    vy: -(Math.random()*.20 + .04),
+    vx: (Math.random()-.5)*.12,
+    a: Math.random()*.38 + .10,
     t: Math.random()*Math.PI*2
   }));
 }
@@ -59,6 +59,150 @@ function drawMotes(){
 sizeCanvas(); seedMotes();
 if(!reduced) drawMotes();
 addEventListener('resize', () => { sizeCanvas(); seedMotes(); });
+
+/* ---------- nama, huruf demi huruf ---------- */
+(function splitName(){
+  const el = document.querySelector('.name');
+  if(!el || reduced) return;
+  const txt = el.textContent.trim();
+  el.setAttribute('aria-label', txt);
+  el.textContent = '';
+  let i = 0;
+  txt.split(' ').forEach((word, wi, all) => {
+    const w = document.createElement('span');
+    w.className = 'w';
+    w.setAttribute('aria-hidden','true');
+    for(const ch of word){
+      const s = document.createElement('i');
+      s.textContent = ch;
+      s.style.transitionDelay = (0.85 + i*0.055).toFixed(2) + 's';
+      w.appendChild(s);
+      i++;
+    }
+    el.appendChild(w);
+    if(wi < all.length - 1) el.appendChild(document.createTextNode(' '));
+    i++;
+  });
+})();
+
+/* ---------- ritme baca ----------
+   Kalimat pendek dikasih ruang sendiri, dan setiap bagian muncul
+   pas kamu sampai di situ. Class-nya dipasang lewat JS supaya
+   kalau JS-nya mati, semua tulisan tetap kebaca.                */
+const BEAT_MAX = 46;   // kalimat sependek ini dianggap "satu tarikan napas"
+
+const paced = [];
+document.querySelectorAll('.letter .sheet > *').forEach(el => {
+  if(el.tagName === 'P' && el.textContent.trim().length <= BEAT_MAX) el.classList.add('beat');
+  paced.push(el);
+});
+document.querySelectorAll('.closing > p').forEach(el => {
+  if(el.classList.contains('big') || el.classList.contains('sign')) return;
+  if(el.textContent.trim().length <= BEAT_MAX) el.classList.add('beat');
+});
+document.querySelectorAll('.little h2, .little .card, .closing > *').forEach(el => paced.push(el));
+
+/* kata ulang berhuruf sambung ("benar-benar", "baik-baik") jangan
+   patah di tengah kalau lagi dipakai ukuran besar */
+(function keepCompounds(){
+  const big = document.querySelectorAll(
+    '.letter h2, .letter p.beat, .little h2, .card h3, .closing .big, .closing p.beat');
+  big.forEach(root => {
+    const walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while(walk.nextNode()) nodes.push(walk.currentNode);
+    nodes.forEach(n => {
+      if(!/\S-\S/.test(n.nodeValue)) return;
+      const frag = document.createDocumentFragment();
+      n.nodeValue.split(/(\S+-\S+)/).forEach(part => {
+        if(!part) return;
+        if(/^\S+-\S+$/.test(part)){
+          const s = document.createElement('span');
+          s.className = 'nb';
+          s.textContent = part;
+          frag.appendChild(s);
+        } else frag.appendChild(document.createTextNode(part));
+      });
+      n.parentNode.replaceChild(frag, n);
+    });
+  });
+})();
+
+let pending = [];
+if(!reduced && 'IntersectionObserver' in window){
+  paced.forEach(el => el.classList.add('rise'));
+  pending = paced.slice();
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(!e.isIntersecting) return;
+      e.target.classList.add('here');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -14% 0px', threshold: 0.01 });
+  paced.forEach(el => io.observe(el));
+}
+
+/* jaring pengaman: kalau discroll cepat, jangan sampai ada bagian
+   yang kelewat dan nggak pernah muncul */
+function sweep(){
+  const limit = innerHeight * 0.88;
+  while(pending.length){
+    const el = pending[0];
+    if(el.classList.contains('here')){ pending.shift(); continue; }
+    if(el.getBoundingClientRect().top < limit){ el.classList.add('here'); pending.shift(); }
+    else break;
+  }
+}
+
+/* ---------- foto yang menemani, lalu dilepas ---------- */
+const presence = document.querySelector('.presence');
+const closing  = document.querySelector('.closing');
+
+if('IntersectionObserver' in window){
+  const near = new IntersectionObserver(entries => {
+    const on = entries.some(e => e.isIntersecting);
+    if(presence) presence.classList.toggle('near', on);
+  }, { threshold: 0.02 });
+  document.querySelectorAll('.letter, .little').forEach(s => near.observe(s));
+
+  if(closing){
+    const fin = new IntersectionObserver(entries => {
+      entries.forEach(e => document.body.classList.toggle('ending', e.isIntersecting));
+    }, { rootMargin: '0px 0px -30% 0px', threshold: 0.01 });
+    fin.observe(closing);
+  }
+}
+
+/* ---------- benang di pinggir surat + hero yang perlahan lepas ---------- */
+const hero   = document.querySelector('.hero');
+const thread = document.querySelector('.thread i');
+let ticking = false;
+
+function onScroll(){
+  const y = scrollY, h = innerHeight;
+
+  if(hero && y < h * 1.3){
+    const t = Math.min(1, y / (h * 0.85));
+    hero.style.opacity   = (1 - t * 0.92).toFixed(3);
+    hero.style.transform = 'translateY(' + (t * -44).toFixed(1) + 'px)';
+  }
+
+  sweep();
+
+  if(thread){
+    const r = thread.parentElement.getBoundingClientRect();
+    const p = (h * 0.58 - r.top) / (r.height || 1);
+    thread.style.height = (Math.max(0, Math.min(1, p)) * 100).toFixed(2) + '%';
+  }
+
+  ticking = false;
+}
+addEventListener('scroll', () => {
+  if(ticking) return;
+  ticking = true;
+  requestAnimationFrame(onScroll);
+}, { passive:true });
+addEventListener('resize', onScroll);
 
 /* ---------- mesin lagu ---------- */
 const Music = (() => {
@@ -150,10 +294,10 @@ const Music = (() => {
     let v = 0;
     const up = setInterval(()=>{
       if(!useFile){ clearInterval(up); return; }
-      v = Math.min(0.7, v + 0.03);
+      v = Math.min(0.7, v + 0.02);
       el.volume = v;
       if(v >= 0.7) clearInterval(up);
-    }, 90);
+    }, 110);
   }
 
   function start(){
@@ -184,12 +328,16 @@ const Music = (() => {
 })();
 
 /* ---------- buka amplop ---------- */
+let opened = false;
 function openGate(){
+  if(opened) return;
+  opened = true;
   gate.classList.add('gone');
   document.body.classList.remove('locked');
   document.body.classList.add('lit');
   try { Music.start(); } catch(e) { /* browser nggak izinin, tombol lagu tetap ada */ }
-  setTimeout(()=>{ gate.remove(); }, 1300);
+  onScroll();
+  setTimeout(()=>{ gate.remove(); }, 1400);
 }
 openBtn.addEventListener('click', openGate);
 musicBtn.addEventListener('click', () => Music.toggle());

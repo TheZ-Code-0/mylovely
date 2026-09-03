@@ -5,21 +5,16 @@ Satu halaman statis. Nggak butuh build, nggak butuh server — cukup di-upload a
 ## Isi folder
 
 ```
-index.html               <- halaman
-style.css                <- tampilan
-script.js                <- lagu + animasi
-foto.jpg                 <- KAMU TARUH SENDIRI
-akhir-cerita-cinta.mp3   <- KAMU TARUH SENDIRI
+index.html            <- halaman
+style.css             <- tampilan
+script.js             <- lagu + ritme baca
+foto.jpg              <- foto
+sekali-ini-saja.mp3   <- lagunya
 ```
 
-Dua file terakhir belum ada di sini. Taruh sendiri di folder yang sama, nama filenya
-harus persis seperti di atas (huruf besar/kecil ikut dihitung).
-
-- **foto.jpg** — foto yang tadi ada di halaman lama. Kalau file aslinya sudah nggak ada,
-  buka HTML lamamu, cari `src="data:image/jpeg;base64,...`, lalu tempel seluruh isi
-  `src="..."` itu ke `<img>` di `index.html` (ganti `foto.jpg`).
-- **akhir-cerita-cinta.mp3** — kalau namanya beda, ubah `SONG_URL` di baris atas `script.js`.
-  Kalau file-nya nggak ada, halaman otomatis main melodi bawaan.
+Semua sudah lengkap, tinggal di-upload apa adanya. Kalau suatu saat kamu ganti lagunya,
+ubah juga `SONG_URL` di baris paling atas `script.js` supaya namanya cocok. Kalau file
+mp3-nya nggak ketemu, halaman otomatis main melodi bawaan.
 
 ## Upload ke GitHub Pages
 

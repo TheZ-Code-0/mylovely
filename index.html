@@ -29,8 +29,10 @@
   <div class="lamp lamp-2"></div>
   <div class="lamp lamp-3"></div>
 </div>
+<div class="presence" aria-hidden="true"></div>
 <canvas id="motes"></canvas>
 <div class="grain"></div>
+<div class="vignette" aria-hidden="true"></div>
 
 <div id="gate">
   <div class="envelope">
@@ -47,13 +49,14 @@
     <figure class="frame reveal d1">
       <img src="foto.jpg" alt="Vivi Yulia Putri" onerror="this.style.display='none'">
     </figure>
-    <h1 class="name reveal d2">Vivi Yulia Putri</h1>
+    <h1 class="name">Vivi Yulia Putri</h1>
     <p class="tagline reveal d3">Teruntuk my lovely, i'm so in love with u</p>
     <div class="cue reveal d4">scroll<span></span></div>
   </section>
 
   <section class="letter">
-    <div class="panel">
+    <div class="thread" aria-hidden="true"><i></i></div>
+    <div class="sheet">
       <h2>Dear My lovely,</h2>
       <p>Aku tidak tahu apakah ini akan menjadi tulisan terakhir yang kamu baca dariku.</p>
       <p>Tapi kalau memang iya, aku ingin untuk terakhir kalinya mengatakan semuanya tanpa meminta apa pun darimu.</p>
@@ -116,10 +119,10 @@
   <section class="little">
     <h2>Hal-hal kecil yang aku hafal</h2>
           <div class="grid">
-        <div class="panel card"><h3>Kamu selalu minta dicium</h3><p>Aku masih ingat hal kecil itu. Kamu selalu minta dicium. Sederhana sekali. Tapi ternyata hal sederhana seperti itu yang paling sulit aku lupakan.</p><p>Karena ketika seseorang sudah tidak lagi berada di samping kita, yang paling sering muncul bukanlah kejadian besar. Justru hal-hal kecil.</p><p>Aku kehilangan sosok yang sangat aku cintai. Dan untuk beberapa waktu, aku bahkan merasa seperti sudah tidak mampu merasakan cinta lagi.</p></div>
-        <div class="panel card"><h3>Cara kamu cerita</h3><p>Bagi aku, ketika kamu diam pun sebenarnya kamu sedang bercerita. Hanya saja tidak dengan kata-kata.</p><p>Aku selalu berusaha memahami diam kamu. Mencoba mengerti apa yang sebenarnya kamu rasakan.</p><p>Karena bagiku, memahami kamu adalah salah satu bentuk caraku mencintai kamu.</p><p>Aku belajar menurunkan ego. Aku belajar mengalah. Aku belajar menerima bahwa tidak semua keinginanku harus terpenuhi.</p><p>Sekarang aku sadar bahwa mencintai seseorang seharusnya tidak membuat kita kehilangan diri sendiri.</p></div>
-        <div class="panel card"><h3>Cara kamu marah</h3><p>Saat kamu marah, itu adalah salah satu hal yang paling tidak ingin aku lihat.</p><p>Karena ketika kamu marah, aku selalu merasa menjadi orang yang paling bersalah. Bukan karena aku selalu salah, tapi karena aku terlalu mencintai kamu dan terlalu takut kehilangan kamu.</p><p>Aku tidak pernah bermaksud menyakiti kamu. Aku hanya memiliki rasa cemburu. Aku takut kehilangan.</p><p>Mungkin cara aku menghadapi ketakutan itu tidak selalu benar. Untuk itu, aku minta maaf.</p></div>
-        <div class="panel card"><h3>Nama kamu</h3><p><strong>Vivi Yulia Putri.</strong></p><p>Nama yang pernah mengisi kepalaku hampir di mana pun aku berada. Nama yang pernah menjadi alasan aku ingin pulang. Nama yang pernah menjadi bagian dari doa-doaku.</p><p>Selama ini aku selalu berusaha membawa kamu pulang. Tapi sekarang aku sadar, aku tidak bisa membawa seseorang pulang kalau dia sendiri sudah memilih rumah yang berbeda.</p><p>Aku tahu aku tidak punya hak atas hubunganmu yang baru. Aku tahu kamu sudah memiliki kehidupanmu sendiri. Dan aku akan menghormatinya.</p><p>Aku hanya ingin kamu tahu bahwa selama ini aku bertahan bukan karena aku tidak memiliki pilihan. Aku bertahan karena aku memilih kamu.</p><p>Dan meskipun akhirnya aku harus menanggung semua kepedihan ini sendirian, aku tidak menyesal pernah mencintai kamu.</p></div>
+        <div class="card"><h3>Kamu selalu minta dicium</h3><p>Aku masih ingat hal kecil itu. Kamu selalu minta dicium. Sederhana sekali. Tapi ternyata hal sederhana seperti itu yang paling sulit aku lupakan.</p><p>Karena ketika seseorang sudah tidak lagi berada di samping kita, yang paling sering muncul bukanlah kejadian besar. Justru hal-hal kecil.</p><p>Aku kehilangan sosok yang sangat aku cintai. Dan untuk beberapa waktu, aku bahkan merasa seperti sudah tidak mampu merasakan cinta lagi.</p></div>
+        <div class="card"><h3>Cara kamu cerita</h3><p>Bagi aku, ketika kamu diam pun sebenarnya kamu sedang bercerita. Hanya saja tidak dengan kata-kata.</p><p>Aku selalu berusaha memahami diam kamu. Mencoba mengerti apa yang sebenarnya kamu rasakan.</p><p>Karena bagiku, memahami kamu adalah salah satu bentuk caraku mencintai kamu.</p><p>Aku belajar menurunkan ego. Aku belajar mengalah. Aku belajar menerima bahwa tidak semua keinginanku harus terpenuhi.</p><p>Sekarang aku sadar bahwa mencintai seseorang seharusnya tidak membuat kita kehilangan diri sendiri.</p></div>
+        <div class="card"><h3>Cara kamu marah</h3><p>Saat kamu marah, itu adalah salah satu hal yang paling tidak ingin aku lihat.</p><p>Karena ketika kamu marah, aku selalu merasa menjadi orang yang paling bersalah. Bukan karena aku selalu salah, tapi karena aku terlalu mencintai kamu dan terlalu takut kehilangan kamu.</p><p>Aku tidak pernah bermaksud menyakiti kamu. Aku hanya memiliki rasa cemburu. Aku takut kehilangan.</p><p>Mungkin cara aku menghadapi ketakutan itu tidak selalu benar. Untuk itu, aku minta maaf.</p></div>
+        <div class="card"><h3>Nama kamu</h3><p><strong>Vivi Yulia Putri.</strong></p><p>Nama yang pernah mengisi kepalaku hampir di mana pun aku berada. Nama yang pernah menjadi alasan aku ingin pulang. Nama yang pernah menjadi bagian dari doa-doaku.</p><p>Selama ini aku selalu berusaha membawa kamu pulang. Tapi sekarang aku sadar, aku tidak bisa membawa seseorang pulang kalau dia sendiri sudah memilih rumah yang berbeda.</p><p>Aku tahu aku tidak punya hak atas hubunganmu yang baru. Aku tahu kamu sudah memiliki kehidupanmu sendiri. Dan aku akan menghormatinya.</p><p>Aku hanya ingin kamu tahu bahwa selama ini aku bertahan bukan karena aku tidak memiliki pilihan. Aku bertahan karena aku memilih kamu.</p><p>Dan meskipun akhirnya aku harus menanggung semua kepedihan ini sendirian, aku tidak menyesal pernah mencintai kamu.</p></div>
       </div>
   </section>
 
