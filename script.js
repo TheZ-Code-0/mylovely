@@ -8,8 +8,8 @@
    Kalau file-nya belum ada atau gagal dimuat, halaman otomatis
    balik ke melodi lembut buatan sendiri, jadi tetap ada suara.
    ============================================================ */
-const SONG_URL   = "akhir-cerita-cinta.mp3";
-const SONG_TITLE = "Akhir Cerita Cinta";
+const SONG_URL   = "sekali-ini-saja.mp3";
+const SONG_TITLE = "Sekali Ini Saja";
 
 const gate     = document.getElementById('gate');
 const openBtn  = document.getElementById('openBtn');
